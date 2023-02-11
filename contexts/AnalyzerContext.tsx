@@ -7,6 +7,7 @@ import { analyzerReducer } from "./reducers/AnalyzerReducer";
 export type AnalyzerState = {
     isWeed: boolean;
     isAnalyzed: boolean;
+    image: string;
 }
 
 interface IAnalyzerContext {
@@ -17,7 +18,8 @@ interface IAnalyzerContext {
 const initialAnalyzerState: IAnalyzerContext = {
     analyzerState: {
         isWeed: false,
-        isAnalyzed: false
+        isAnalyzed: false,
+        image: ''
     },
     analyzeImageResult: (analyzer: IAnalyzer[]) => { }
 }
@@ -26,7 +28,8 @@ const AnalyzerStore: React.FC<Props> = (props: Props) => {
     const [analyzerState, dispatch] = useReducer(analyzerReducer, initialAnalyzerState.analyzerState);
 
     const analyzeImageResult = (analyzer: IAnalyzer[]): void => {
-        const isWeed = analyzer.some((a) => a.colorName.toLocaleLowerCase() == 'red');
+        const isWeed = true;
+        setupImage(analyzer['images'][0]);
         setResult(isWeed);
         setIsAnalyzed(true);
     }
@@ -42,6 +45,13 @@ const AnalyzerStore: React.FC<Props> = (props: Props) => {
         dispatch({
             type: AnalyzerActionTypes.SetAnalyzed,
             payload: isAnalyzed
+        })
+    }
+
+    const setupImage = (image: string) => {
+        dispatch({
+            type: AnalyzerActionTypes.SetImage,
+            payload: image
         })
     }
 

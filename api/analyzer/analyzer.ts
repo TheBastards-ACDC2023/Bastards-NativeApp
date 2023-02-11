@@ -6,7 +6,6 @@ const password = 'acdc23';
 const auth = 'Basic ' + Buffer.from(username + ':' + password).toString('base64');
 
 const client = httpClient('http://wobba.dyndns.org:7860', {
-   // "Content-Type": "application/octet-stream",
    // 'Host': 'http://wobba.dyndns.org', 
     'Authorization': auth
 });

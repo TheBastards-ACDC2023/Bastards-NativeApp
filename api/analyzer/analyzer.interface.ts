@@ -1,3 +1,4 @@
 export interface IAnalyzer {
-    colorName: string
+    colorName: string,
+    images: string[]
 }

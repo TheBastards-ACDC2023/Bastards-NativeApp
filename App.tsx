@@ -17,9 +17,12 @@ import Login from './pages/Login';
 import Menu from './pages/Menu';
 import Subscription from './pages/Subscription';
 import Weather from './pages/Weather';
+import { useFonts } from 'expo-font';
 
 export default function App() {
-
+  const [loaded] = useFonts({
+    Montserrat: require('./assets/fonts/Lato/Lato-Regular.ttf'),
+  });
   return (
     <>
       <StatusBar style="auto" />
@@ -29,11 +32,11 @@ export default function App() {
             <WeatherStore>
               <Header />
               <Routes>
-                <Route path="/camera" element={<CameraPage />} />              
+                <Route path="/camera" element={<CameraPage />} />
                 <Route path="/weather" element={<Weather />} />
                 <Route path="/cownter" element={<Cownter />} />
-                <Route path="/menu" element={<Menu />} />    
-                <Route path="/" element={<Dashboard />} />           
+                <Route path="/menu" element={<Menu />} />
+                <Route path="/" element={<Dashboard />} />
               </Routes>
             </WeatherStore>
             <FkaToast />
@@ -51,5 +54,6 @@ const styles = StyleSheet.create({
     color: '#d0d0c0',
     alignItems: 'center',
     justifyContent: 'center',
+    fontFamily:"Lato-Regular"
   },
 });

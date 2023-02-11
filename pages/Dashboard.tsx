@@ -89,7 +89,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
-        padding: 15
+        padding: 15,
+        fontFamily: 'Lato'
     },
     date: {
         marginTop: 10,

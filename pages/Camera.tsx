@@ -12,6 +12,7 @@ import { useIAnalyzerContext } from '../contexts/AnalyzerContext';
 import { Spinner } from '../components/Spinner';
 import FkaCard from '../components/ui/FkaCard';
 import { useNavigate } from 'react-router';
+import { Image } from 'react-native';
 
 
 const CameraPage = () => {
@@ -20,9 +21,10 @@ const CameraPage = () => {
     const [showCamera, setShowCamera] = useState<boolean>(false);
     const [isLoading, setIsLoading] = useState<boolean>(false)
     const { analyzerState, analyzeImageResult } = useIAnalyzerContext();
+    let base64img: '';
 
     let navigate = useNavigate();
-    
+
 
     useEffect(() => {
         (async () => {
@@ -57,6 +59,7 @@ const CameraPage = () => {
         try {
             const response = await AnalyzerAPI.post(base64Image);
             analyzeImageResult(response);
+
         } catch (error) {
             console.warn(error);
         }
@@ -88,48 +91,51 @@ const CameraPage = () => {
                         </View>
                     </Camera>
                 ) : (
-                        <FkaPadding>
-                            {
-                                isLoading ? <View style={styles.spinnerContainer}><Spinner /></View> : (
-                                    <>
-                                        <FkaSpaceBottom>
-                                            <FkaHeadline>Show me your true face!</FkaHeadline>
-                                            <Text>This feature identifies the true face of a hidden pirate</Text>
-                                        </FkaSpaceBottom>
-                                        {
-                                            analyzerState.isAnalyzed && (
-                                                <>
-                                                    <FkaSpaceBottom>
-                                                        <FkaHeadline size="medium">Mine resultater</FkaHeadline>
-                                                        <Text>Basert på bildet av din åker er det {analyzerState.isWeed ? '' : 'ikke'} ugress i din åker</Text>
-                                                    </FkaSpaceBottom>
-                                                    {
-                                                        analyzerState.isWeed && (
-                                                            <FkaSpaceBottom>
-                                                                <FkaCard>
-                                                                    <FkaPadding>
-                                                                        <FkaHeadline size="medium">Anbefalinger</FkaHeadline>
-                                                                        <FkaSpaceBottom>
-                                                                            <Text>
-                                                                                For å unngå slike uønsket vekster som nå er funnet, anbefaler Felleskjøpet at du sprøyter åkeren.
-                                                                                For at du ikke skal glemme dette anbefaler vi at du oppretter et problemnotat. på din
+                    <FkaPadding>
+                        {
+                            isLoading ? <View style={styles.spinnerContainer}><Spinner /></View> : (
+                                <>
+                                    <FkaSpaceBottom>
+                                        <FkaHeadline>Show me your true face!</FkaHeadline>
+                                        <Text>This feature identifies the true face of a hidden pirate</Text>
+                                    </FkaSpaceBottom>
+                                    {
+                                        analyzerState.isAnalyzed && (
+                                            <>
+                                                <FkaSpaceBottom>
+                                                    <FkaHeadline size="medium">Mine resultater</FkaHeadline>
+                                                    <Text>Basert på bildet av din åker er det {analyzerState.isWeed ? '' : 'ikke'} ugress i din åker</Text>
+                                                </FkaSpaceBottom>
+                                                {
+                                                    analyzerState.isWeed && (
+                                                        <FkaSpaceBottom>
+                                                            <FkaCard>
+                                                                <FkaPadding>
+                                                                    <FkaHeadline size="medium">Anbefalinger</FkaHeadline>
+                                                                    <FkaSpaceBottom>
+
+                                                                        <Image source={{ uri: "data:image/png;base64," + analyzerState.image }} style={{height: 150}} />
+
+                                                                        <Text>
+                                                                            For å unngå slike uønsket vekster som nå er funnet, anbefaler Felleskjøpet at du sprøyter åkeren.
+                                                                            For at du ikke skal glemme dette anbefaler vi at du oppretter et problemnotat. på din
                                                                         </Text>
-                                                                        </FkaSpaceBottom>
-                                                                        <FkaButton label="Opprett problemnotat" onClick={() => navigateTo('./create-issue')}></FkaButton>
-                                                                    </FkaPadding>
-                                                                </FkaCard>
-                                                            </FkaSpaceBottom>
-                                                        )
-                                                    }
-                                                </>
-                                            )
-                                        }
-                                        <FkaButton onClick={() => setShowCamera(true)} label="Start"></FkaButton>
-                                    </>
-                                )
-                            }
-                        </FkaPadding>
-                    )
+                                                                    </FkaSpaceBottom>
+                                                                    <FkaButton label="Opprett problemnotat" onClick={() => navigateTo('./create-issue')}></FkaButton>
+                                                                </FkaPadding>
+                                                            </FkaCard>
+                                                        </FkaSpaceBottom>
+                                                    )
+                                                }
+                                            </>
+                                        )
+                                    }
+                                    <FkaButton onClick={() => setShowCamera(true)} label="Start"></FkaButton>
+                                </>
+                            )
+                        }
+                    </FkaPadding>
+                )
             }
         </View>
     )
