@@ -28,11 +28,11 @@ const WeatherRow = (props: IWeatherRow) => {
                             <Text>{Math.floor(props.temp - 273)}</Text>
                         </View>
                         <View>
-                            <Text style={styles.label}>Vind</Text>
+                            <Text style={styles.label}>Wind</Text>
                             <Text>{props.wind}</Text>
                         </View>
                         <View>
-                            <Text style={styles.label}>Fuktighet</Text>
+                            <Text style={styles.label}>Fog</Text>
                             <Text>{props.humidity} %</Text>
                         </View>
                     </View>

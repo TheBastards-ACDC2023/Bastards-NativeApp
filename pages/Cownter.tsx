@@ -15,7 +15,7 @@ const Cownter = () => {
 
     return (
     <FkaContainer>
-        <Text style={styles.headline}>Cownting</Text>
+        <Text style={styles.headline}>Counting shipmates</Text>
         <FkaButton label="+" onClick={onButtonClick}/>
         <FkaButton label="reset" onClick={onButtonResetClick}/>
 

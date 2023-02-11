@@ -35,7 +35,7 @@ const CameraPage = () => {
         return <View />;
     }
     if (hasPermission === false) {
-        return <Text>Har ikke tilgang til kamera</Text>;
+        return <Text>Camera is dead</Text>;
     }
 
     const navigateTo = (url: string) => {
@@ -84,7 +84,7 @@ const CameraPage = () => {
                 showCamera ? (
                     <Camera style={styles.camera} ref={(ref: any) => setCameraRef(ref)}>
                         <View style={styles.buttonContainer}>
-                            <FkaButton label="Ta bilde" onClick={takePhoto}></FkaButton>
+                            <FkaButton label="Capture the bastard!" onClick={takePhoto}></FkaButton>
                         </View>
                     </Camera>
                 ) : (

@@ -11,7 +11,7 @@ const Header = () => {
     return (
         <View style={styles.header}>
             <View style={styles.innerContainer}>
-                <TouchableHighlight onPress={() => navigateTo('/dashboard')}>
+                <TouchableHighlight onPress={() => navigateTo('/')}>
                     <Image source={require('../assets/bastards/bastards.png')} style={styles.logo} />
                 </TouchableHighlight>
                 <View>

@@ -10,7 +10,7 @@ const Menu = () => {
             <BstHeadline>Greetings Capt'n Flint</BstHeadline>
             <Text style={styles.text}>What do you wish to do today?</Text>
             <View style={styles.menuContainer}>
-                <NavigationItem label="Main Deck" iconName="dashboard" onPressUrl="/dashboard" />
+                <NavigationItem label="Main Deck" iconName="dashboard" onPressUrl="/" />
                 <NavigationItem label="Shiver me timbers" iconName="weather" onPressUrl="/weather" />
                 <NavigationItem label="Find hidden pirates" iconName="pirate2" onPressUrl="/camera" />
                 <NavigationItem label="Raides" iconName="cow" onPressUrl="/fields" />

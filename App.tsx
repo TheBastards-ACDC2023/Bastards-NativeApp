@@ -29,12 +29,11 @@ export default function App() {
             <WeatherStore>
               <Header />
               <Routes>
-                <Route path="/camera" element={<CameraPage />} />
-                <Route path="/" element={<Subscription />} />
+                <Route path="/camera" element={<CameraPage />} />              
                 <Route path="/weather" element={<Weather />} />
                 <Route path="/cownter" element={<Cownter />} />
                 <Route path="/menu" element={<Menu />} />    
-                <Route path="/dashboard" element={<Dashboard />} />           
+                <Route path="/" element={<Dashboard />} />           
               </Routes>
             </WeatherStore>
             <FkaToast />

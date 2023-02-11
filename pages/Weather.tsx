@@ -24,14 +24,14 @@ const Weather = () => {
 
     return (
         <FkaContainer>
-            <Text style={styles.headline}>I dag</Text>
+            <Text style={styles.headline}>Today</Text>
             {
                 weatherState.weather && (
                     <WeatherTodayCard {...mapToWeatherToday(weatherState.weather)}></WeatherTodayCard>
 
                 )
             }
-            <Text style={styles.headline}>Værvarsel</Text>
+            <Text style={styles.headline}>Breezing Cold, not ideal for raiding</Text>
             <FlatList
                 data={weatherState.weather?.list}
                 keyExtractor={(item) => item.dt.toString()}
